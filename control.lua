@@ -18,6 +18,22 @@ script.register_metatable("rover", Rover.metatable)
 -- Local flag for post-load restoration (cannot use storage in on_load due to CRC check)
 local needs_post_load_restore = false
 
+local function check_csp_preset()
+    if storage.csp_preset_warned then return end
+    local nauvis = game.surfaces["nauvis"]
+    if not nauvis then return end
+    local controls = nauvis.map_gen_settings.autoplace_controls
+    if controls and controls["iron-ore"] and controls["iron-ore"].frequency then
+        if controls["iron-ore"].frequency < 2.0 then
+            for _, player in pairs(game.players) do
+                if player.valid then
+                    player.print({"csp-message.preset-warning"})
+                end
+            end
+        end
+    end
+    storage.csp_preset_warned = true
+end
 local function on_init()
     storage.csp_units = storage.csp_units or {}
     storage.csp_surfaces = storage.csp_surfaces or {}
