@@ -3,8 +3,8 @@ data:extend({
     type = "map-gen-presets",
     name = "default",
     ["crash-support-pod"] = {
-      order = "z[csp]",
-      default = true,
+      order = "a[crash-support-pod]",
+      default = false,
       basic_settings = {
         autoplace_controls = {
           ["iron-ore"]   = {frequency = 3.0, size = 0.33, richness = 0.5},
