@@ -1,5 +1,6 @@
 require "util"
 require "__base__.prototypes.entity.spidertron-animations"
+require "map-gen-presets"
 
 local tint = {r = 0.3, g = 0.3, b = 1, a = 1}
 local tech_base = "__base__/graphics/technology/"
